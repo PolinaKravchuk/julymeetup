@@ -1,11 +1,20 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function (Controller) {
+	"sap/ui/ibso/controller/BaseController"
+
+], function (BaseController) {
 	"use strict";
 
-	return Controller.extend("julymeetup.sapui5.architecture.library.controller.Main", {
+	return BaseController.extend("julymeetup.sapui5.architecture.library.controller.Main", {
 		onInit: function () {
+			BaseController.prototype.onInit.call(this);
+		},
 
+		onRouteMatch: function () {
+			debugger;
+		},
+
+		getViewModelName: function () {
+			return "viewModel";
 		}
 	});
 });

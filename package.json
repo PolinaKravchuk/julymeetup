@@ -1,18 +1,36 @@
 {
-  "name": "sapui5.architecture.library",
-  "version": "0.0.1",
-  "description": "",
-  "devDependencies": {
-    "@ui5/cli": "1.13.0",
-    "@sap/ui5-builder-webide-extension": "1.0.x"
-  },
+  "name": "julymeetup",
+  "version": "1.0.0",
+  "private": true,
   "scripts": {
-    "build": "ui5 build --clean-dest --include-task=generateManifestBundle generateCachebusterInfo"
+    "proxy": "node proxy.js"
   },
-  "ui5": {
-    "dependencies": [
-      "@sap/ui5-builder-webide-extension"
-    ]
+  "devDependencies": {
+    "cors-anywhere": "^0.4.3",
+    "custdev-sapui5-infra-util": "^4.3.0",
+    "grunt": "1.0.3",
+    "grunt-cli": "1.3.2",
+    "sap.ui.ibso": "^1.0.0-20200709211313"
   },
-  "private": "true"
+  "sapui5": {
+    "version": "1.70.1",
+    "resources": "https://sapui5.hana.ondemand.com/1.70.1/resources",
+    "testResources": "https://sapui5.hana.ondemand.com/1.70.1/test-resources",
+    "libs": {
+      "sap.ui.ibso": {
+        "namespace": "sap.ui.ibso",
+        "resources": "node_modules/sap.ui.ibso/sap.ui.ibso/src/sap/ui/ibso",
+        "testResources": "node_modules/sap.ui.ibso/sap.ui.ibso/src/sap/ui/ibso"
+      }
+    },
+    "apps": {
+      "julymeetup": {
+        "namespace": "julymeetup.sapui5.architecture.library",
+        "resources": "webapp",
+        "testResources": "webapp/test"
+      }
+    },
+    "proxies": {},
+    "profiles": {}
+  }
 }

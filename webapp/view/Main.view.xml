@@ -1,10 +1,30 @@
-<mvc:View controllerName="julymeetup.sapui5.architecture.library.controller.Main" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+<mvc:View 
+	controllerName="julymeetup.sapui5.architecture.library.controller.Main" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	displayBlock="true"
+	xmlns:ibso="sap.ui.ibso.control"
 	xmlns="sap.m">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
 				<Page id="page" title="{i18n>title}">
-					<content></content>
+					<content>
+						<!-- <ibso:table.MagicTable>
+						</ibso:table.MagicTable> -->
+						<Table 
+							items="{global>/Shippers}">
+							<columns>
+								<Column>
+									<Label text="qqq" />
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<Text text="{global>CompanyName}"></Text>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</content>
 				</Page>
 			</pages>
 		</App>

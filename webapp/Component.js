@@ -1,11 +1,14 @@
 sap.ui.define([
-	"sap/ui/core/UIComponent",
+	"sap/ui/ibso/bootstrap/BaseComponent",
 	"sap/ui/Device",
-	"julymeetup/sapui5/architecture/library/model/models"
-], function (UIComponent, Device, models) {
+	"julymeetup/sapui5/architecture/library/model/models",
+	"julymeetup/sapui5/architecture/library/service/ServiceManager",
+	"julymeetup/sapui5/architecture/library/service/NorthwindService"
+
+], function (BaseComponent, Device, models, ServiceManager, NorthwindService) {
 	"use strict";
 
-	return UIComponent.extend("julymeetup.sapui5.architecture.library.Component", {
+	return BaseComponent.extend("julymeetup.sapui5.architecture.library.Component", {
 
 		metadata: {
 			manifest: "json"
@@ -17,14 +20,23 @@ sap.ui.define([
 		 * @override
 		 */
 		init: function () {
+			this._initServiceManager();
+			
 			// call the base component's init function
-			UIComponent.prototype.init.apply(this, arguments);
+			BaseComponent.prototype.init.apply(this, arguments);
+			
+			// // enable routing
+			// this.getRouter().initialize();
 
-			// enable routing
-			this.getRouter().initialize();
+			// // set the device model
+			// this.setModel(models.createDeviceModel(), "device");
+		},
 
-			// set the device model
-			this.setModel(models.createDeviceModel(), "device");
-		}
+		_initServiceManager: function () {
+            // register services
+            var oODataModel = this.getModel("northwind");
+            var oNorthwindService = new NorthwindService(oODataModel);
+            ServiceManager.setNorthwindService(oNorthwindService);
+        }
 	});
 });

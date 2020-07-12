@@ -9,6 +9,15 @@
 		},
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
+		"dataSources": {
+			"northwindService": {
+				"uri": "http://localhost:8000/https://services.odata.org/V2/Northwind/Northwind.svc/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
+		},
 		"sourceTemplate": {
 			"id": "ui5template.basicSAPUI5ApplicationProject",
 			"version": "1.38.11"
@@ -58,6 +67,12 @@
 				"settings": {
 					"bundleName": "julymeetup.sapui5.architecture.library.i18n.i18n"
 				}
+			},
+			"northwind": {
+				"dataSource": "northwindService"
+			},
+			"global": {
+				"type": "julymeetup.sapui5.architecture.library.model.AppModel"
 			}
 		},
 		"resources": {
@@ -76,16 +91,16 @@
 				"clearControlAggregation": false
 			},
 			"routes": [{
-				"name": "RouteMain",
-				"pattern": "RouteMain",
-				"target": ["TargetMain"]
+				"name": "main",
+				"pattern": "",
+				"target": "main"
 			}],
 			"targets": {
-				"TargetMain": {
+				"main": {
 					"viewType": "XML",
+					"viewPath": "julymeetup.sapui5.architecture.library.view",
 					"transition": "slide",
 					"clearControlAggregation": false,
-					"viewId": "Main",
 					"viewName": "Main"
 				}
 			}
